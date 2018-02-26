@@ -15,6 +15,17 @@ class FileIO {
       });
     });
   }
+
+  write(data) {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(this.file, data, err => {
+        if (err)
+          reject(err);
+        else
+          resolve();
+      });
+    });
+  }
 }
 
 module.exports = { FileIO };
