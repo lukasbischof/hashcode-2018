@@ -13,8 +13,8 @@ class FileIO {
         else
           resolve(data.toString());
       });
-    })
+    });
   }
-};
+}
 
 module.exports = { FileIO };
