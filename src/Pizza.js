@@ -18,7 +18,7 @@ class Pizza {
     for (var y = 0; y <= yDiff; y++) {
       var xStart = Math.min(slice.from.x, slice.to.x);
       var xDiff = Math.abs(slice.from.x - slice.to.x);
-      // console.log(`${y + yStart} ${xStart}-${xDiff} : ${this.rows[y].slice(xStart, xStart + xDiff + 1)}`);
+
       result.push(
         this.rows[y + yStart].slice(xStart, xStart + xDiff + 1)
       );

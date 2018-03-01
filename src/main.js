@@ -13,10 +13,13 @@ module.exports = {
     try {
       log('reading...');
 
-      let pizza = FileParser.parse(await new FileIO('data/example.in').read());
+      let fileName = 'small.in';
+      let pizza = FileParser.parse(await new FileIO('data/' + fileName).read());
 
       log('Pizza data: ');
       log('\n+-------------------------------+', chalk.green);
+      log(`| ${fileName}\t\t\t|`, chalk.green);
+      log('+-------------------------------+', chalk.green);
       log(`| columns: ${pizza.colsCount}\t\t\t|`, chalk.green);
       log(`| columns: ${pizza.rowsCount}\t\t\t|`, chalk.green);
       log(`| maximum slice size: ${pizza.maxSlice}\t\t|`, chalk.green);
@@ -30,7 +33,9 @@ module.exports = {
 
       log('done! writing...');
 
-      await new FileIO('output/example.out').write(core.output());
+      let outputFile = `output/${fileName}.out`;
+      await new FileIO(outputFile).write(core.output());
+      log(`wrote to ${outputFile}`);
     } catch(err) {
       console.error(chalk.red(`Error occurred: ${err}`));
       console.error(chalk.red(err.stack));
