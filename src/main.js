@@ -1,4 +1,6 @@
-const { FileIO } = require('./FileIO');
+const {
+  FileIO
+} = require('./FileIO');
 const process = require('process');
 const Parser = require('./parser');
 const Core = require('./core');

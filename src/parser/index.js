@@ -18,8 +18,7 @@ module.exports = class Parser {
       rs.push(ride);
     });
 
-    for (var i = 0; i < sim.vehicleCount; i++)
-    {
+    for (var i = 0; i < sim.vehicleCount; i++) {
       let v = new Vehicle(i);
       vs.push(v);
     }
