@@ -9,6 +9,7 @@ module.exports = class Output {
     vehicles.forEach(vehicle => {
       output += `${vehicle.toString()}\n`;
     });
-    fileIO.write(output);
+    fileIO.write(output)
+      .then(() => console.log(`Successfully wrote file: "${outputFileName}.in"`));
   }
 };
