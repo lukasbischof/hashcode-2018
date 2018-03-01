@@ -20,5 +20,12 @@ module.exports = class Ride {
     this.latestFinish = latestFinish;
   }
 
+  get steps() {
+    return Math.abs(this.endPositionX-this.startPositionX) + Math.abs(this.endPositionY-this.startPositionY);
+  }
+
+  distanceToMe(myX, myY) {
+      return Math.abs(myX-this.startPositionX) + Math.abs(myY-this.startPositionY);
+  }
 
 };
