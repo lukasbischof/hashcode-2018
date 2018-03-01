@@ -4,40 +4,40 @@ const Ride = require('../models/Ride.js');
 
 module.exports = class Parser {
 
-    static parseData(rawInput) {
-        let sim = this.parseFirsLine(rawInput.split('\n').shift())
+  static parseData(rawInput) {
+    let sim = this.parseFirsLine(rawInput.split('\n').shift());
 
-        let lines = rawInput.trim().split('\n');
-        let rs = [];
-        let vs = [];
+    let lines = rawInput.trim().split('\n');
+    let rs = [];
+    let vs = [];
 
-        lines.forEach((val, id) => {
-            let parts = val.split(' ');
-            let ride = new Ride(id, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+    lines.forEach((val, id) => {
+      let parts = val.split(' ');
+      let ride = new Ride(id, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
 
-            rs.push(ride);
-        });
+      rs.push(ride);
+    });
 
-        for (var i = 0; i < sim.vehicleCount; i++)
-        {
-            let v = new Vehicle(i);
-            vs.push(v);
-        }
-
-        return {
-            simulation: sim,
-            rides: rs,
-            vehicles: vs
-        }
+    for (var i = 0; i < sim.vehicleCount; i++)
+    {
+      let v = new Vehicle(i);
+      vs.push(v);
     }
 
-    static parseFirsLine(firstLine) {
-        let parts = firstLine.split(' ');
+    return {
+      simulation: sim,
+      rides: rs,
+      vehicles: vs
+    };
+  }
 
-        let simulation = new Simulation(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+  static parseFirsLine(firstLine) {
+    let parts = firstLine.split(' ');
 
-        return simulation;
-    }
+    let simulation = new Simulation(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+
+    return simulation;
+  }
 
 
 
