@@ -9,10 +9,10 @@ module.exports = {
   async main() {
     const files = [
       'a_example',
-      'b_should_be_easy',
-      'c_no_hurry',
-      'd_metropolis',
-      'e_high_bonus',
+      // 'b_should_be_easy',
+      // 'c_no_hurry',
+      // 'd_metropolis',
+      // 'e_high_bonus',
     ];
 
     for (let file of files) {
@@ -28,6 +28,7 @@ module.exports = {
         core.output(file);
       } catch (err) {
         console.error(`Can't read file: ${err}`);
+        console.error(err.stack);
         process.exit(1);
       }
     }

@@ -6,26 +6,32 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
+function l(msg) {
+  console.log(msg);
+}
+
 module.exports = class Core {
-  constructor(simulation) {
-    this.simulation = simulation;
+  constructor(models) {
+    this.models = models;
   }
 
   run() {
-    let sortedRides = this.simulation.rides.sort((ride1, ride2) => ride2.steps - ride1.steps);
-
-    for (var currentStep = 0; currentStep <= this.simulation.maxSteps; currentStep++) {
-      for (var car of this.simulation.vehicles) {
+    let simulation = this.models.simulation;
+    let sortedRides = this.models.rides.sort((ride1, ride2) => ride2.steps - ride1.steps);
+    
+    for (var currentStep = 0; currentStep <= simulation.maxSteps; currentStep++) {
+      for (var car of this.models.vehicles) {
         car.nextStep(currentStep);
+        
         if (car.currentRide == undefined) {
-          let possibleRides = sortedRides.fliter((ride) => {
+          let possibleRides = sortedRides.filter((ride) => {
             return ride.latestFinish > car.calcCurrentRideEnd(currentStep, ride);
           });
           
           if (possibleRides.length > 0) {
             let ride = possibleRides[0];
 
-            car.assignRide(ride);
+            car.assignRide(currentStep, ride);
             let index = sortedRides.indexOf(ride);
             sortedRides.remove(index);
           }
@@ -35,6 +41,7 @@ module.exports = class Core {
   }
 
   output(outputFileName) {
-    new Output(this.simulation.vehicles, outputFileName);
+    //console.log(this.simulation.vehicles);
+    new Output(this.models.vehicles, outputFileName);
   }
 };
