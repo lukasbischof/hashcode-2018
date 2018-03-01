@@ -27,7 +27,10 @@ module.exports = class Ride {
   get scoring(vehicle, currentSimulationStep, timeBonus) {
     let steps = this.steps();
     let timeB = timeBonus;
-    // let 
+    let distanceToRide = this.distanceToMe(vehicle.x, vehicle.y);
+    let wait = (currentSimulationStep + steps) >= this.earliestStart ? 0 : this.earliestStart - (currentSimulationStep + steps);
+
+    return steps + ((wait > 0) ? 0 : timeB) - distanceToRide - wait;
   }
 
   distanceToMe(myX, myY) {
