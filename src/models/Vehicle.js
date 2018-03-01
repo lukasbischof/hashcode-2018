@@ -1,10 +1,10 @@
 module.exports = class Vehicle {
 
   /**
-   * [constructor description]
-   * @method constructor
-   * @param  {[integer]}    id [id]
-   */
+  * [constructor description]
+  * @method constructor
+  * @param  {[integer]}    id [id]
+  */
   constructor(id) {
     this.x = 0;
     this.y = 0;
@@ -24,14 +24,11 @@ module.exports = class Vehicle {
     }
   }
 
-  calcCurrentRideEnd(currentSimulationStep) {
-    if(this.currentRide) {
-      let steps = 0;
+  static calcCurrentRideEnd(currentSimulationStep, ride) {
+    let distanceToRide = ride.distanceToMe(this.x, this.y);
+    let waitOnStart = (currentSimulationStep + distanceToRide) >= ride.earliestStart ? 0 : ride.earliestStart - (currentSimulationStep + distanceToRide);
 
-      steps += this.currentRide.distanceToMe(thus.x, this.y)
-
-    }
-    return -1;
+    return distanceToRide+waitOnStart+ride.steps;
   }
 
   toString() {
