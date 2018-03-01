@@ -1,15 +1,4 @@
 module.exports = class Ride {
-
-  /**
-   *
-   * @param id
-   * @param startPositionX
-   * @param startPositionY
-   * @param endPositionX
-   * @param endPositionY
-   * @param earliestStart
-   * @param latestFinish
-   */
   constructor(id, startPositionX, startPositionY, endPositionX, endPositionY, earliestStart, latestFinish) {
     this.id = id;
     this.startPositionX = startPositionX;
@@ -24,13 +13,26 @@ module.exports = class Ride {
     return Math.abs(this.endPositionX - this.startPositionX) + Math.abs(this.endPositionY - this.startPositionY);
   }
 
-  scoring(vehicle, currentSimulationStep, timeBonus) {
-    let steps = this.steps();
-    let timeB = timeBonus;
-    let distanceToRide = this.distanceToMe(vehicle.x, vehicle.y);
-    let wait = (currentSimulationStep + steps) >= this.earliestStart ? 0 : this.earliestStart - (currentSimulationStep + steps);
+  // hashcodeScore(vehicle, currentSimulationStep, timeBonus) {
+  //   let steps = this.steps;
+  //   let distanceToRide = this.distanceToMe(vehicle.x, vehicle.y);
+  //   let wait = (currentSimulationStep + distanceToRide) - this.earliestStart;
+  //   let timeB = wait == 0 ? timeBonus : 0;
 
-    return steps + ((wait > 0) ? 0 : timeB) - distanceToRide - wait;
+  //   return steps + timeB;
+  // }
+
+  scoring(vehicle, currentSimulationStep, timeBonus) {
+    let steps = this.steps;
+    let distanceToRide = this.distanceToMe(vehicle.x, vehicle.y);
+    let wait = (currentSimulationStep + distanceToRide) - this.earliestStart;
+    let timeB = wait == 0 ? timeBonus : 0;
+
+    // arrive later than start
+    if (wait > 0)
+      wait = 0;
+
+    return steps + timeB - distanceToRide - -wait;
   }
 
   distanceToMe(myX, myY) {

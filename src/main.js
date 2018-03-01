@@ -9,10 +9,10 @@ module.exports = {
   async main() {
     const files = [
       'a_example',
-      // 'b_should_be_easy',
-      // 'c_no_hurry',
-      // 'd_metropolis',
-      // 'e_high_bonus',
+      'b_should_be_easy',
+      'c_no_hurry',
+      'd_metropolis',
+      'e_high_bonus',
     ];
 
     for (let file of files) {
@@ -20,7 +20,7 @@ module.exports = {
         let data = await new FileIO('data/' + file + '.in').read();
         // console.log(data);
         let models = Parser.parseData(data);
-        console.log(models);
+        // console.log(models);
 
         let core = new Core(models);
         core.run();

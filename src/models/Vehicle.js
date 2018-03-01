@@ -22,6 +22,8 @@ module.exports = class Vehicle {
 
   nextStep(currentSimulationStep) {
     if (this.currentRide && this.currentRideFinish == currentSimulationStep) {
+      this.x = this.currentRide.endPositionX;
+      this.y = this.currentRide.endPositionY;
       this.currentRide = undefined;
     }
   }
