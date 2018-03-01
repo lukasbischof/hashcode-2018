@@ -1,10 +1,14 @@
-const fileIO = require('../FileIO');
+const { FileIO } = require('../FileIO');
 
 module.exports = class Output {
-  constructor(ride, simulate, vehicle){
-    const fileIO = fileIO.FileIO;
+  constructor(vehicles, outputFileName){
+    let fileIO = new FileIO(`output/${outputFileName}.in`);
 
-    fileIO.write('');
 
+    let output = '';
+    vehicles.forEach(vehicle => {
+      output += `${vehicle.toString()}\n`;
+    });
+    fileIO.write(output);
   }
 };
