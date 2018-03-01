@@ -1,7 +1,7 @@
-const { FileIO } = require('../FileIO');
+const {FileIO} = require('../FileIO');
 
 module.exports = class Output {
-  constructor(vehicles, outputFileName){
+  constructor(vehicles, outputFileName) {
     let fileIO = new FileIO(`output/${outputFileName}.in`);
 
 

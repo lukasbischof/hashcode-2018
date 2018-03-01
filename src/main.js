@@ -7,19 +7,29 @@ const Core = require('./core');
 
 module.exports = {
   async main() {
-    try {
-      let data = await new FileIO('data/a_example.in').read();
-      // console.log(data);
-      let models = Parser.parseData(data);
-      // console.log(models);
+    const files = [
+      'data/a_example.in',
+      'data/b_should_be_easy.in',
+      'data/c_no_hurry.in',
+      'data/d_metropolis.in',
+      'data/e_high_bonus.in',
+    ];
 
-      let core = new Core(models);
-      core.run();
+    for (let file of files) {
+      try {
+        let data = await new FileIO(file).read();
+        // console.log(data);
+        let models = Parser.parseData(data);
+        // console.log(models);
 
-      await new FileIO('output/example.out').write(core.output());
-    } catch(err) {
-      console.error(`Can't read file: ${err}`);
-      process.exit(1);
+        let core = new Core(models);
+        core.run();
+
+        await new FileIO('output/example.out').write(core.output());
+      } catch (err) {
+        console.error(`Can't read file: ${err}`);
+        process.exit(1);
+      }
     }
   }
 };
