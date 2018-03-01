@@ -17,11 +17,21 @@ module.exports = class Vehicle {
     this.currentRide = ride;
     this.rides.push(ride);
   }
-  
+
   nextStep(currentSimulationStep) {
     if (this.currentRide) {
-      
+
     }
+  }
+
+  calcCurrentRideEnd(currentSimulationStep) {
+    if(this.currentRide) {
+      let steps = 0;
+
+      steps += this.currentRide.distanceToMe(thus.x, this.y)
+
+    }
+    return -1;
   }
 
   toString() {
