@@ -11,16 +11,18 @@ module.exports = class Vehicle {
     this.id = id;
     this.rides = [];
     this.currentRide = undefined;
+    this.currentRideFinish = 0;
   }
 
-  assignRide(ride) {
+  assignRide(currentSimulationStep, ride) {
     this.currentRide = ride;
-    this.rides.push(ride);
+    this.rides.push(ride.id);
+    this.currentRideFinish = this.calcCurrentRideEnd(currentSimulationStep, ride);
   }
 
   nextStep(currentSimulationStep) {
-    if (this.currentRide) {
-
+    if (this.currentRide && this.currentRideFinish == currentSimulationStep) {
+      this.currentRide = undefined;
     }
   }
 
@@ -32,7 +34,7 @@ module.exports = class Vehicle {
   }
 
   toString() {
-    let outputString = `${this.id}`;
+    let outputString = `${this.rides.length}`;
 
     this.rides.forEach(ride => {
       outputString += ` ${ride}`;

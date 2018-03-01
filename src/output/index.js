@@ -2,7 +2,7 @@ const {FileIO} = require('../FileIO');
 
 module.exports = class Output {
   constructor(vehicles, outputFileName) {
-    let fileIO = new FileIO(`output/${outputFileName}.in`);
+    let fileIO = new FileIO(`output/${outputFileName}.out`);
 
 
     let output = '';
@@ -10,6 +10,7 @@ module.exports = class Output {
       output += `${vehicle.toString()}\n`;
     });
     fileIO.write(output)
-      .then(() => console.log(`Successfully wrote file: "${outputFileName}.in"`));
+      .then(() => console.log(`Successfully wrote file: "${outputFileName}.out"`));
   }
 };
+
