@@ -24,7 +24,7 @@ module.exports = class Vehicle {
     }
   }
 
-  static calcCurrentRideEnd(currentSimulationStep, ride) {
+  calcCurrentRideEnd(currentSimulationStep, ride) {
     let distanceToRide = ride.distanceToMe(this.x, this.y);
     let waitOnStart = (currentSimulationStep + distanceToRide) >= ride.earliestStart ? 0 : ride.earliestStart - (currentSimulationStep + distanceToRide);
 
