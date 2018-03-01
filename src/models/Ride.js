@@ -24,6 +24,12 @@ module.exports = class Ride {
     return Math.abs(this.endPositionX - this.startPositionX) + Math.abs(this.endPositionY - this.startPositionY);
   }
 
+  get scoring(vehicle, currentSimulationStep, timeBonus) {
+    let steps = this.steps();
+    let timeB = timeBonus;
+    // let 
+  }
+
   distanceToMe(myX, myY) {
     return Math.abs(myX - this.startPositionX) + Math.abs(myY - this.startPositionY);
   }
