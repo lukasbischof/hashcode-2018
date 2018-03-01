@@ -5,9 +5,9 @@ const Ride = require('../models/Ride.js');
 module.exports = class Parser {
 
   static parseData(rawInput) {
-    let sim = this.parseFirsLine(rawInput.split('\n').shift());
-
     let lines = rawInput.trim().split('\n');
+    let sim = this.parseFirsLine(lines.shift());
+
     let rs = [];
     let vs = [];
 

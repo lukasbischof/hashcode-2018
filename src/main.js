@@ -20,7 +20,7 @@ module.exports = {
         let data = await new FileIO(file).read();
         // console.log(data);
         let models = Parser.parseData(data);
-        // console.log(models);
+        console.log(models);
 
         let core = new Core(models);
         core.run();
