@@ -1,25 +1,24 @@
 module.exports = class Ride {
 
-    /**
-     * [constructor description]
-     * @method constructor
-     * @param  {[integer]}    id [id]
-     * @param  {[integer]}    a [start x]
-     * @param  {[integer]}    b [start y]
-     * @param  {[integer]}    x [end x]
-     * @param  {[integer]}    y [end y]
-     * @param  {[integer]}    s [earliest start]
-     * @param  {[integer]}    f [latest finish]
-     */
-    constructor(id, a, b, x, y, s, f) {
-        this.a = a;
-        this.b = b;
-        this.x = x;
-        this.y = y;
-        this.s = s;
-        this.f = f;
-    }
-
+  /**
+   *
+   * @param id
+   * @param startPositionX
+   * @param startPositionY
+   * @param endPositionX
+   * @param endPositionY
+   * @param earliestStart
+   * @param latestFinish
+   */
+  constructor(id, startPositionX, startPositionY, endPositionX, endPositionY, earliestStart, latestFinish) {
+    this.id = id;
+    this.startPositionX = startPositionX;
+    this.startPositionY = startPositionY;
+    this.endPositionX = endPositionX;
+    this.endPositionY = endPositionY;
+    this.earliestStart = earliestStart;
+    this.latestFinish = latestFinish;
+  }
 
 
 };
