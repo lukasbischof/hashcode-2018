@@ -13,7 +13,7 @@ module.exports = class Parser {
 
     lines.forEach((val, id) => {
       let parts = val.split(' ');
-      let ride = new Ride(id, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+      let ride = new Ride(id, +parts[0], +parts[1], +parts[2], +parts[3], +parts[4], +parts[5]);
 
       rs.push(ride);
     });
@@ -34,7 +34,7 @@ module.exports = class Parser {
   static parseFirsLine(firstLine) {
     let parts = firstLine.split(' ');
 
-    let simulation = new Simulation(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+    let simulation = new Simulation(+parts[0], +parts[1], +parts[2], +parts[3], +parts[4], +parts[5]);
 
     return simulation;
   }
