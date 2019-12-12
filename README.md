@@ -1,4 +1,4 @@
-# Hashcode-2018
+# Hashcode-2018 [![Run on Repl.it](https://repl.it/badge/github/orsa-scholis/hashcode-2018)](https://repl.it/github/orsa-scholis/hashcode-2018)
 
 ## Problem
 
